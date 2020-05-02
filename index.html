@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Список студентов</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="main-container">
+    <form onsubmit="submitStudent()">
+      <label for="lname">Фамилия</label>
+      <input type="text" name="lname" class="lname" id="lname"><br>
+      <label for="fname">Имя</label>
+      <input type="text" name="fname" class="fname" id="fname"><br>
+      <label for="mname">Отчество</label>
+      <input type="text" name="mname" class="mname" id="mname"><br>
+      <label for="course">Курс</label>
+      <input type="text" name="course" class="course" id="course"><br>
+      <label for="gender">Пол</label>
+      <input type="radio" name="gender" value="male" id="gender">Мужской
+      <input type="radio" name="gender" value="female" id="gender">Женский<br>
+      <input type="submit" value="Внести данные">
+    </form>
+
+    
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>

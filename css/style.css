@@ -1,0 +1,16 @@
+.main-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fname {
+  margin-left: 35px;
+}
+
+.lname {
+  margin-left: 2px;
+}
+
+.course {
+  margin-left: 31px;
+}
