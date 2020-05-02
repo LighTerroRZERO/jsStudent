@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,14 +15,24 @@
       <input type="text" name="fname" class="fname" id="fname"><br>
       <label for="mname">Отчество</label>
       <input type="text" name="mname" class="mname" id="mname"><br>
+      <label for="age">Возраст</label>
+      <input type="text" name="age" class="age" id="age"><br>
       <label for="course">Курс</label>
       <input type="text" name="course" class="course" id="course"><br>
       <label for="gender">Пол</label>
-      <input type="radio" name="gender" value="male" id="gender">Мужской
-      <input type="radio" name="gender" value="female" id="gender">Женский<br>
+      <input type="radio" name="gender" value="Мужской" id="genderMale">Мужской
+      <input type="radio" name="gender" value="Женский" id="genderFemale">Женский<br>
       <input type="submit" value="Внести данные">
     </form>
 
+    <table id="student-list">
+      <caption>Список студентов:</caption>
+      <tr>
+        <th>№</th>
+        <th>ФИО</th>
+        <th>Возраст</th>
+      </tr>
+    </table>
     
   </div>
   <script src="js/script.js"></script>
