@@ -1,7 +1,5 @@
 const studentList = [];
 
-let studNum = 1;
-
 const lastName = document.getElementById('lname');
 const firstName = document.getElementById('fname');
 const middleName = document.getElementById('mname');
@@ -9,9 +7,7 @@ const studentCourse = document.getElementById('course');
 const studentGender = document.getElementById('gender');
 
 const submitStudent = () => {
-  const student = {
-    number: studNum,
-  };
+  const student = {};
 
   student.lname =  lastName.value;
   student.fname = firstName.value;
