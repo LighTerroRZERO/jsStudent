@@ -29,16 +29,30 @@ const createLineTable = () => {
 };
 
 const listBuilding = (arr = []) => {
-  createLineTable();
+  
 };
 
 const submitStudent = () => {
   const student = {};
+  
+  if(lastName.value == "" || firstName.value == "" || 
+    middleName.value == "" || studentAge.value == "" || studentCourse.value == "") {
+    alert("Не все нужные данные введены!!!");
+    return;
+  }
+
   student.lname =  lastName.value;
   student.fname = firstName.value;
   student.mname = middleName.value;
   student.age = studentAge.value;
   student.course = studentCourse.value;
+
+  lastName.value = "";
+  firstName.value = "";
+  middleName.value = "";
+  studentAge.value = "";
+  studentCourse.value = "";
+  
   if(studentGenderMale.checked) {
     student.gender = studentGenderMale.value;
   } else if (studentGenderFemale.checked) {
@@ -47,13 +61,7 @@ const submitStudent = () => {
     student.gender = "Оно";
   }
 
-  const studentsList = [];
+  studentList.push(student);
 
-  studentsList.push(student);
-  studentList = studentsList.slice();
-  
-  //alert(studentList[0].lname);
-  
-  listBuilding(studentList);
-  
+  createLineTable(); 
 };

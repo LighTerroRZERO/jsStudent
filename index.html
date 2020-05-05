@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="main-container">
-    <form onsubmit="submitStudent()">
+    <div>
       <label for="lname">Фамилия</label>
       <input type="text" name="lname" class="lname" id="lname"><br>
       <label for="fname">Имя</label>
@@ -22,8 +22,8 @@
       <label for="gender">Пол</label>
       <input type="radio" name="gender" value="Мужской" id="genderMale">Мужской
       <input type="radio" name="gender" value="Женский" id="genderFemale">Женский<br>
-      <input type="submit" value="Внести данные">
-    </form>
+      <button onclick="submitStudent()">Ввести данные</button>
+    </div>
 
     <table id="student-list">
       <caption>Список студентов:</caption>
