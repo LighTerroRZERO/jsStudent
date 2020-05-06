@@ -171,3 +171,17 @@ const deleteStudent = () => {
 const findElById = (id, arr = []) => {
   return arr.findIndex(el => el.id === id);
 };
+
+const filter = document.getElementById('filter');
+filter.oninput = () => {
+
+  for(const student of studentList) {
+    const trUpdate = document.getElementById(`tr${student.id}`);
+    if(student.lname.includes(filter.value) == true || student.fname.includes(filter.value) == true) {
+      trUpdate.style.visibility = 'visible';
+    } else {
+      trUpdate.style.visibility = 'hidden';
+    }
+    
+  }
+};
