@@ -1,5 +1,6 @@
 let studentList = [];
 
+// переменные для внесения студентов в таблицу 
 const lastName = document.getElementById('lname');
 const firstName = document.getElementById('fname');
 const middleName = document.getElementById('mname');
@@ -7,9 +8,20 @@ const studentAge = document.getElementById('age');
 const studentCourse = document.getElementById('course');
 const studentGenderMale = document.getElementById('genderMale');
 const studentGenderFemale = document.getElementById('genderFemale');
+
 const table = document.getElementById('student-list');
+
 const stub = document.getElementById('stub');
+
+// переменные для input в модальном окне
 const idStud = document.getElementById('idStud');
+const lastNameStud = document.getElementById('lastNameStud');
+const firstNameStud = document.getElementById('firstNameStud');
+const middleNameStud = document.getElementById('middleNameStud');
+const ageStud = document.getElementById('ageStud');
+const courseStud = document.getElementById('courseStud');
+const maleGenderStud = document.getElementById('maleGenderStud');
+const femaleGenderStud = document.getElementById('femaleGenderStud');
 
 const createLineTable = () => {
   const number = studentList[studentList.length - 1].id;
@@ -19,16 +31,16 @@ const createLineTable = () => {
   table.append(trCreate);
   const tdCreateId = document.createElement('td');
   tdCreateId.id = `td${number}`;
-  tdCreateId.innerHTML = `${number}`;
+  tdCreateId.innerText = `${number}`;
   trCreate.append(tdCreateId);
   const tdCreateName = document.createElement('td');
   tdCreateName.id = `name${number}`;
   tdCreateName.onclick = () => openStudWindow(number);
-  tdCreateName.innerHTML = `${studentList[number].lname} ${studentList[number].fname[0]}. ${studentList[number].mname[0]}.`;
+  tdCreateName.innerText = `${studentList[number].lname} ${studentList[number].fname[0]}. ${studentList[number].mname[0]}.`;
   trCreate.append(tdCreateName);
   const tdCreateAge = document.createElement('td');
   tdCreateAge.id = `age${number}`;
-  tdCreateAge.innerHTML = `${studentList[number].age}`;
+  tdCreateAge.innerText = `${studentList[number].age}`;
   trCreate.append(tdCreateAge);
 };
 
@@ -72,14 +84,6 @@ const closeWindow = () => {
 };
 
 const openStudWindow = (number) => {
-  const lastNameStud = document.getElementById('lastNameStud');
-  const firstNameStud = document.getElementById('firstNameStud');
-  const middleNameStud = document.getElementById('middleNameStud');
-  const ageStud = document.getElementById('ageStud');
-  const courseStud = document.getElementById('courseStud');
-  const maleGenderStud = document.getElementById('maleGenderStud');
-  const femaleGenderStud = document.getElementById('femaleGenderStud');
-  
   const index = findElById(number, studentList);
 
   idStud.innerText = number;
@@ -98,7 +102,61 @@ const openStudWindow = (number) => {
 };
 
 const editStudent = () => {
-  
+  const editStudent = {};
+
+  lastNameStud.disabled = false;
+  firstNameStud.disabled = false;
+  middleNameStud.disabled = false;
+  ageStud.disabled = false;
+  courseStud.disabled = false;
+  maleGenderStud.disabled = false;
+  femaleGenderStud.disabled = false;
+
+  if(lastNameStud.value == "" || firstNameStud.value == "" || 
+  middleNameStud.value == "" || ageStud.value == "" || courseStud.value == "") {
+    alert("Не все нужные данные введены!!!");
+    return;
+  }
+
+  const footerStudWindow = document.getElementById('footerStudWindow');
+  const saveButton = document.createElement('button');
+  saveButton.innerText = 'Сохранить';
+  saveButton.onclick = () => {
+    editStudent.id = +idStud.innerText;
+    editStudent.lname =  lastNameStud.value;
+    editStudent.fname = firstNameStud.value;
+    editStudent.mname = middleNameStud.value;
+    editStudent.age = ageStud.value;
+    editStudent.course = courseStud.value;
+
+    if(maleGenderStud.checked) {
+      editStudent.gender = maleGenderStud.value;
+    } else if (femaleGenderStud.checked) {
+      editStudent.gender = femaleGenderStud.value;
+    } else {
+      editStudent.gender = "Оно";
+    }
+
+    const index = findElById(editStudent.id, studentList);
+
+    studentList.splice(index, 1);
+    studentList.push(editStudent);
+
+    const tdEditName = document.getElementById(`name${editStudent.id}`);
+    tdEditName.innerText = `${editStudent.lname} ${editStudent.fname[0]}. ${editStudent.mname[0]}.`;
+    const tdEditAge = document.getElementById(`age${editStudent.id}`);
+    tdEditAge.innerText = `${editStudent.age}`;
+
+    lastNameStud.disabled = true;
+    firstNameStud.disabled = true;
+    middleNameStud.disabled = true;
+    ageStud.disabled = true;
+    courseStud.disabled = true;
+    maleGenderStud.disabled = true;
+    femaleGenderStud.disabled = true;
+
+  };
+  footerStudWindow.append(saveButton);
 };
 
 const deleteStudent = () => {
