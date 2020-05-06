@@ -103,6 +103,7 @@ const openStudWindow = (number) => {
 
 const editStudent = () => {
   const editStudent = {};
+  document.getElementById('btnEditStudent').disabled = true;
 
   lastNameStud.disabled = false;
   firstNameStud.disabled = false;
@@ -154,6 +155,8 @@ const editStudent = () => {
     courseStud.disabled = true;
     maleGenderStud.disabled = true;
     femaleGenderStud.disabled = true;
+    document.getElementById('btnEditStudent').disabled = false;
+    saveButton.parentNode.removeChild(saveButton);
 
   };
   footerStudWindow.append(saveButton);
