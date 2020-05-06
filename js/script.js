@@ -161,6 +161,37 @@ const editStudent = () => {
 
   };
   footerStudWindow.append(saveButton);
+
+  const btnCloseWindow = document.getElementById('btnCloseWindow');
+  const btnDeleteStudent = document.getElementById('btnDeleteStudent');
+  
+  btnCloseWindow.onclick = () => {
+    lastNameStud.disabled = true;
+    firstNameStud.disabled = true;
+    middleNameStud.disabled = true;
+    ageStud.disabled = true;
+    courseStud.disabled = true;
+    maleGenderStud.disabled = true;
+    femaleGenderStud.disabled = true;
+    document.getElementById('btnEditStudent').disabled = false;
+    saveButton.parentNode.removeChild(saveButton);
+    closeWindow();
+    btnCloseWindow.onclick = closeWindow;
+  };
+
+  btnDeleteStudent.onclick = () => {
+    lastNameStud.disabled = true;
+    firstNameStud.disabled = true;
+    middleNameStud.disabled = true;
+    ageStud.disabled = true;
+    courseStud.disabled = true;
+    maleGenderStud.disabled = true;
+    femaleGenderStud.disabled = true;
+    document.getElementById('btnEditStudent').disabled = false;
+    saveButton.parentNode.removeChild(saveButton);
+    deleteStudent();
+    btnDeleteStudent.onclick = deleteStudent;
+  };
 };
 
 const deleteStudent = () => {
@@ -181,7 +212,10 @@ filter.oninput = () => {
 
   for(const student of studentList) {
     const trUpdate = document.getElementById(`tr${student.id}`);
-    if(student.lname.includes(filter.value) == true || student.fname.includes(filter.value) == true) {
+    const lastName = student.lname.toLowerCase();
+    const firstName = student.fname.toLowerCase();
+    const filterValue = filter.value.toLowerCase();
+    if(lastName.includes(filterValue) == true || firstName.includes(filterValue) == true) {
       trUpdate.style.visibility = 'visible';
     } else {
       trUpdate.style.visibility = 'hidden';
