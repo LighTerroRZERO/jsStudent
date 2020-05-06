@@ -113,16 +113,17 @@ const editStudent = () => {
   maleGenderStud.disabled = false;
   femaleGenderStud.disabled = false;
 
-  if(lastNameStud.value == "" || firstNameStud.value == "" || 
-  middleNameStud.value == "" || ageStud.value == "" || courseStud.value == "") {
-    alert("Не все нужные данные введены!!!");
-    return;
-  }
-
   const footerStudWindow = document.getElementById('footerStudWindow');
   const saveButton = document.createElement('button');
   saveButton.innerText = 'Сохранить';
   saveButton.onclick = () => {
+
+    if(lastNameStud.value == "" || firstNameStud.value == "" || 
+    middleNameStud.value == "" || ageStud.value == "" || courseStud.value == "") {
+      alert("Не все нужные данные введены!!!");
+      return;
+    }
+
     editStudent.id = +idStud.innerText;
     editStudent.lname =  lastNameStud.value;
     editStudent.fname = firstNameStud.value;
