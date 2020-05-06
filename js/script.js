@@ -9,40 +9,26 @@ const studentGenderMale = document.getElementById('genderMale');
 const studentGenderFemale = document.getElementById('genderFemale');
 const table = document.getElementById('student-list');
 const stub = document.getElementById('stub');
+const idStud = document.getElementById('idStud');
 
 const createLineTable = () => {
-  const number = studentList.length;
+  const number = studentList[studentList.length - 1].id;
   const trCreate = document.createElement('tr');
   trCreate.id = `tr${number}`;
+  trCreate.value = number;
   table.append(trCreate);
-  const tdCreateNum = document.createElement('td');
-  tdCreateNum.id = `0${number}`;
-  tdCreateNum.innerHTML = number;
-  trCreate.append(tdCreateNum);
+  const tdCreateId = document.createElement('td');
+  tdCreateId.id = `td${number}`;
+  tdCreateId.innerHTML = `${number}`;
+  trCreate.append(tdCreateId);
   const tdCreateName = document.createElement('td');
   tdCreateName.id = `name${number}`;
-  tdCreateName.onclick = () => {
-    const lastNameStud = document.getElementById('lastNameStud');
-    const firstNameStud = document.getElementById('firstNameStud');
-    const middleNameStud = document.getElementById('middleNameStud');
-    const ageStud = document.getElementById('ageStud');
-    const courseStud = document.getElementById('courseStud');
-    const genderStud = document.getElementById('genderStud');
-
-    lastNameStud.innerHTML = `Фамилия: ${studentList[number -1].lname}`;
-    firstNameStud.innerHTML = `Имя: ${studentList[number -1].fname}`;
-    middleNameStud.innerHTML = `Отчество: ${studentList[number -1].mname}`;
-    ageStud.innerHTML = `Возраст: ${studentList[number -1].age}`;
-    courseStud.innerHTML = `Курс: ${studentList[number -1].course}`;
-    genderStud.innerHTML = `Пол: ${studentList[number -1].gender}`;
-
-    stub.className += ' openWindow';
-  };
-  tdCreateName.innerHTML = `${studentList[number-1].lname} ${studentList[number-1].fname[0]}. ${studentList[number-1].mname[0]}.`;
+  tdCreateName.onclick = () => openStudWindow(number);
+  tdCreateName.innerHTML = `${studentList[number].lname} ${studentList[number].fname[0]}. ${studentList[number].mname[0]}.`;
   trCreate.append(tdCreateName);
   const tdCreateAge = document.createElement('td');
   tdCreateAge.id = `age${number}`;
-  tdCreateAge.innerHTML = `${studentList[number-1].age}`;
+  tdCreateAge.innerHTML = `${studentList[number].age}`;
   trCreate.append(tdCreateAge);
 };
 
@@ -55,6 +41,7 @@ const submitStudent = () => {
     return;
   }
 
+  student.id = studentList.length;
   student.lname =  lastName.value;
   student.fname = firstName.value;
   student.mname = middleName.value;
@@ -84,10 +71,45 @@ const closeWindow = () => {
   stub.className = 'stub';
 };
 
+const openStudWindow = (number) => {
+  const lastNameStud = document.getElementById('lastNameStud');
+  const firstNameStud = document.getElementById('firstNameStud');
+  const middleNameStud = document.getElementById('middleNameStud');
+  const ageStud = document.getElementById('ageStud');
+  const courseStud = document.getElementById('courseStud');
+  const maleGenderStud = document.getElementById('maleGenderStud');
+  const femaleGenderStud = document.getElementById('femaleGenderStud');
+  
+  const index = findElById(number, studentList);
+
+  idStud.innerText = number;
+  lastNameStud.value = studentList[index].lname;
+  firstNameStud.value = studentList[index].fname;
+  middleNameStud.value = studentList[index].mname;
+  ageStud.value = studentList[index].age;
+  courseStud.value = studentList[index].course;
+  if(studentList[index].gender == 'Мужской') {
+    maleGenderStud.checked = true;
+  } else if (studentList[index].gender == 'Женский') {
+    femaleGenderStud.checked = true;
+  }
+
+  stub.className += ' openWindow';
+};
+
 const editStudent = () => {
   
 };
 
 const deleteStudent = () => {
+  const id = +idStud.innerText;
+  const trDelete = document.getElementById(`tr${id}`);
+  const index = findElById(id, studentList);
+  studentList.splice(index, 1);
+  stub.className = 'stub';
+  trDelete.parentNode.removeChild(trDelete);
+};
 
+const findElById = (id, arr = []) => {
+  return arr.findIndex(el => el.id === id);
 };

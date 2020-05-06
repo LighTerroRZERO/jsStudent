@@ -28,7 +28,7 @@
     <table id="student-list">
       <caption>Список студентов:</caption>
       <tr>
-        <th>№</th>
+        <th>id</th>
         <th>ФИО</th>
         <th>Возраст</th>
       </tr>
@@ -43,17 +43,25 @@
         <button onclick="closeWindow()">Закрыть</button>
       </div>
       <div>
-        <p id="lastNameStud"></p>
-        <p id="firstNameStud"></p>
-        <p id="middleNameStud"></p>
-        <p id="ageStud"></p>
-        <p id="courseStud"></p>
-        <p id="genderStud"></p>
+        <p id="idStud"></p>
+        <label for="lname">Фамилия</label><br/>
+        <input type="text" disabled name="lname" id="lastNameStud"><br/>
+        <label for="fname">Имя</label><br/>
+        <input type="text" disabled name="fname" id="firstNameStud"><br/>
+        <label for="mname">Отчество</label><br/>
+        <input type="text" disabled name="mname" id="middleNameStud"><br/>
+        <label for="age">Возраст</label><br/>
+        <input type="text" disabled name="age" id="ageStud"><br/>
+        <label for="course">Курс</label><br/>
+        <input type="text" disabled name="course" id="courseStud"><br/>
+        <label for="gender">Пол</label>
+        <input type="radio" disabled name="gender" id="maleGenderStud">Мужской
+        <input type="radio" disabled name="gender" id="femaleGenderStud">Женский<br/>
       </div>
 
       <div class="footerStudWindow">
-        <button onclick="editStudent">Редактировать данные о студенте</button>
-        <button onclick="deleteStudent">Удалить студента</button>
+        <button onclick="editStudent()">Редактировать данные о студенте</button>
+        <button onclick="deleteStudent()">Удалить студента</button>
       </div>
 
     </div>
