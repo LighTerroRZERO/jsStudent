@@ -23,6 +23,8 @@ const courseStud = document.getElementById('courseStud');
 const maleGenderStud = document.getElementById('maleGenderStud');
 const femaleGenderStud = document.getElementById('femaleGenderStud');
 
+const saveButton = document.createElement('button');
+
 const createLineTable = () => {
   const number = studentList[studentList.length - 1].id;
   const trCreate = document.createElement('tr');
@@ -114,7 +116,8 @@ const editStudent = () => {
   femaleGenderStud.disabled = false;
 
   const footerStudWindow = document.getElementById('footerStudWindow');
-  const saveButton = document.createElement('button');
+
+  saveButton.style.visibility = 'visible';
   saveButton.innerText = 'Сохранить';
   saveButton.onclick = () => {
 
@@ -157,7 +160,7 @@ const editStudent = () => {
     maleGenderStud.disabled = true;
     femaleGenderStud.disabled = true;
     document.getElementById('btnEditStudent').disabled = false;
-    saveButton.parentNode.removeChild(saveButton);
+    saveButton.style.visibility = 'hidden';
 
   };
   footerStudWindow.append(saveButton);
@@ -174,7 +177,7 @@ const editStudent = () => {
     maleGenderStud.disabled = true;
     femaleGenderStud.disabled = true;
     document.getElementById('btnEditStudent').disabled = false;
-    saveButton.parentNode.removeChild(saveButton);
+    saveButton.style.visibility = 'hidden';
     closeWindow();
     btnCloseWindow.onclick = closeWindow;
   };
@@ -188,7 +191,7 @@ const editStudent = () => {
     maleGenderStud.disabled = true;
     femaleGenderStud.disabled = true;
     document.getElementById('btnEditStudent').disabled = false;
-    saveButton.parentNode.removeChild(saveButton);
+    saveButton.style.visibility = 'hidden';
     deleteStudent();
     btnDeleteStudent.onclick = deleteStudent;
   };
