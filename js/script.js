@@ -117,7 +117,7 @@ const editStudent = () => {
 
   const footerStudWindow = document.getElementById('footerStudWindow');
 
-  saveButton.style.visibility = 'visible';
+  saveButton.style.display = 'block';
   saveButton.innerText = 'Сохранить';
   saveButton.onclick = () => {
 
@@ -160,7 +160,7 @@ const editStudent = () => {
     maleGenderStud.disabled = true;
     femaleGenderStud.disabled = true;
     document.getElementById('btnEditStudent').disabled = false;
-    saveButton.style.visibility = 'hidden';
+    saveButton.style.visibility = 'none';
 
   };
   footerStudWindow.append(saveButton);
@@ -177,7 +177,7 @@ const editStudent = () => {
     maleGenderStud.disabled = true;
     femaleGenderStud.disabled = true;
     document.getElementById('btnEditStudent').disabled = false;
-    saveButton.style.visibility = 'hidden';
+    saveButton.style.visibility = 'none';
     closeWindow();
     btnCloseWindow.onclick = closeWindow;
   };
@@ -191,7 +191,7 @@ const editStudent = () => {
     maleGenderStud.disabled = true;
     femaleGenderStud.disabled = true;
     document.getElementById('btnEditStudent').disabled = false;
-    saveButton.style.visibility = 'hidden';
+    saveButton.style.visibility = 'none';
     deleteStudent();
     btnDeleteStudent.onclick = deleteStudent;
   };
@@ -219,9 +219,9 @@ filter.oninput = () => {
     const firstName = student.fname.toLowerCase();
     const filterValue = filter.value.toLowerCase();
     if(lastName.includes(filterValue) == true || firstName.includes(filterValue) == true) {
-      trUpdate.style.visibility = 'visible';
+      trUpdate.style.display = 'table-row';
     } else {
-      trUpdate.style.visibility = 'hidden';
+      trUpdate.style.display = 'none';
     }
     
   }
